@@ -1,0 +1,12 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div *ngxVar="title as otherTitle" style="text-align:center">
+  <h1>Hello, {{ otherTitle }}!</h1>
+</div>
+
+
+<ng-template [ngxVar]="title" let-otherTitle>
+  <div style="text-align:center">
+    <h1>Hello, {{ otherTitle }}!</h1>
+  </div>
+</ng-template>
+
