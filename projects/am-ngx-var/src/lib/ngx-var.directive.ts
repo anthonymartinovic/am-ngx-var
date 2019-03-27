@@ -28,9 +28,7 @@ export class NgxVar {
   }
 
   private updateView() {
-    if (this.context.$implicit) {
-      this.viewContainer.clear();
-      this.viewContainer.createEmbeddedView(this.varTemplateRef, this.context);
-    }
+    this.viewContainer.clear();
+    this.viewContainer.createEmbeddedView(this.varTemplateRef, this.context);
   }
 }

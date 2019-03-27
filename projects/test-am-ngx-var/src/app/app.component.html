@@ -1,12 +1,11 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div *ngxVar="title as otherTitle" style="text-align:center">
-  <h1>Hello, {{ otherTitle }}!</h1>
-</div>
+<ng-container *ngxVar="users$ | async; let users">
 
-
-<ng-template [ngxVar]="title" let-otherTitle>
-  <div style="text-align:center">
-    <h1>Hello, {{ otherTitle }}!</h1>
+  <div>
+    <h1>{{ users ? 'Users' : 'Loading users...' }}</h1>
   </div>
-</ng-template>
 
+  <div *ngIf="users" style="background-color:#DDD;">
+    <h1 *ngFor="let user of users">{{ user.name }}</h1>
+  </div>
+
+</ng-container>

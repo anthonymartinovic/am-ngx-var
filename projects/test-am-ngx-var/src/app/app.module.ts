@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AmNgxVarModule } from 'am-ngx-var';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { AmNgxVarModule } from 'am-ngx-var';
   ],
   imports: [
     BrowserModule,
-    AmNgxVarModule
+    AmNgxVarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
