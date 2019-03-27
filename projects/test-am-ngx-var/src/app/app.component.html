@@ -1,11 +1,21 @@
-<ng-container *ngxVar="users$ | async; let users">
+<mat-card *ngxVar="users$ | async; let users">
 
-  <div>
-    <h1>{{ users ? 'Users' : 'Loading users...' }}</h1>
-  </div>
+  <mat-card-title>{{ users ? 'Users' : 'Please wait...' }}</mat-card-title>
 
-  <div *ngIf="users" style="background-color:#DDD;">
-    <h1 *ngFor="let user of users">{{ user.name }}</h1>
-  </div>
+  <mat-card-content>
 
-</ng-container>
+    <div *ngIf="!users" style="display:flex; justify-content:center; padding:2rem;">
+      <mat-spinner></mat-spinner>
+    </div>
+  
+    <mat-list>
+      <mat-list-item *ngFor="let user of users">
+        <mat-icon mat-list-icon>person</mat-icon>
+        <h4 mat-line>{{ user.id }}. {{ user.name }}</h4>
+        <p mat-line>{{ user.email }}</p>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-card-content>
+
+</mat-card>

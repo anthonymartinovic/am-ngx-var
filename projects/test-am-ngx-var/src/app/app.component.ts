@@ -1,27 +1,29 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map, delay } from 'rxjs/operators';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
+interface User {
+  id: number;
+  username: string;
+  name: string;
+  email: string;
+  phone: string;
+  website: string;
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  users$: Observable<any[]>;
+  users$: Observable<User[]> = this.http
+    .get('http://jsonplaceholder.typicode.com/users')
+    .pipe(delay(3000)) as Observable<User[]>;
 
   constructor(
     private http: HttpClient
   ) {}
-
-  ngOnInit(): void {
-    this.users$ = this.http
-      .get('http://jsonplaceholder.typicode.com/users')
-      .pipe(
-        delay(3000)
-      ) as any;
-  }
 }

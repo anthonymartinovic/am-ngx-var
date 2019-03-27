@@ -1,20 +1,29 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AmNgxVarModule } from 'am-ngx-var';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  MatCardModule,
+  MatIconModule,
+  MatListModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AmNgxVarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatIconModule,
+    MatListModule,
+    MatProgressSpinnerModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

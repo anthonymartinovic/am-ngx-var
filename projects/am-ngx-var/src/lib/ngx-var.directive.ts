@@ -6,10 +6,8 @@ export class NgxVarContext {
 }
 
 @Directive({
-// tslint:disable-next-line: directive-selector
   selector: '[ngxVar]'
 })
-// tslint:disable-next-line: directive-class-suffix
 export class NgxVar {
   private context: NgxVarContext = new NgxVarContext();
   private varTemplateRef: TemplateRef<NgxVarContext | null> = null;
