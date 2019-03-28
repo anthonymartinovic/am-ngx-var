@@ -1,21 +1,74 @@
-<mat-card *ngxVar="users$ | async; let users">
+<div style="display: flex; flex-direction: row; justify-content: space-around; width: 100%; margin: 2rem;">
 
-  <mat-card-title>{{ users ? 'Users' : 'Please wait...' }}</mat-card-title>
+  <!-- multiple values -->
+  <mat-card *ngxVar="{ users: users$ | async, title: 'Users (multiple values)' }; let data">
 
-  <mat-card-content>
-
-    <div *ngIf="!users" style="display:flex; justify-content:center; padding:2rem;">
-      <mat-spinner></mat-spinner>
-    </div>
+    <mat-card-title>{{ data.users ? data.title : 'Please wait...' }}</mat-card-title>
   
-    <mat-list>
-      <mat-list-item *ngFor="let user of users">
-        <mat-icon mat-list-icon>person</mat-icon>
-        <h4 mat-line>{{ user.id }}. {{ user.name }}</h4>
-        <p mat-line>{{ user.email }}</p>
-      </mat-list-item>
-    </mat-list>
+    <mat-card-content>
+  
+      <div *ngIf="!data.users" style="display:flex; justify-content:center; padding:2rem;">
+        <mat-spinner></mat-spinner>
+      </div>
+    
+      <mat-list>
+        <mat-list-item *ngFor="let user of data.users">
+          <mat-icon mat-list-icon>person</mat-icon>
+          <h4 mat-line>{{ user.id }}. {{ user.name }}</h4>
+          <p mat-line>{{ user.email }}</p>
+        </mat-list-item>
+      </mat-list>
+  
+    </mat-card-content>
+  
+  </mat-card>
 
-  </mat-card-content>
+  <!-- single value -->
+  <mat-card *ngxVar="users$ | async; let users">
 
-</mat-card>
+    <mat-card-title>{{ users ? 'Users (single value)' : 'Please wait...' }}</mat-card-title>
+  
+    <mat-card-content>
+  
+      <div *ngIf="!users" style="display:flex; justify-content:center; padding:2rem;">
+        <mat-spinner></mat-spinner>
+      </div>
+    
+      <mat-list>
+        <mat-list-item *ngFor="let user of users">
+          <mat-icon mat-list-icon>person</mat-icon>
+          <h4 mat-line>{{ user.id }}. {{ user.name }}</h4>
+          <p mat-line>{{ user.email }}</p>
+        </mat-list-item>
+      </mat-list>
+  
+    </mat-card-content>
+  
+  </mat-card>
+
+  <!-- ng-template -->
+  <ng-template [ngxVar]="users$ | async" let-users>
+    <mat-card>
+    
+      <mat-card-title>{{ users ? 'Users (ng-template)' : 'Please wait...' }}</mat-card-title>
+    
+      <mat-card-content>
+    
+        <div *ngIf="!users" style="display:flex; justify-content:center; padding:2rem;">
+          <mat-spinner></mat-spinner>
+        </div>
+      
+        <mat-list>
+          <mat-list-item *ngFor="let user of users">
+            <mat-icon mat-list-icon>person</mat-icon>
+            <h4 mat-line>{{ user.id }}. {{ user.name }}</h4>
+            <p mat-line>{{ user.email }}</p>
+          </mat-list-item>
+        </mat-list>
+    
+      </mat-card-content>
+    
+    </mat-card>
+  </ng-template>
+
+</div>
